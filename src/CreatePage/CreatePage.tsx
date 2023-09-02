@@ -19,13 +19,13 @@ const CreatePage = () => {
   return (
     <StyledCreatePage>
       <img
-        src="/assets/image/logo-green.png"
+        src="/assets/image/logo-black.png"
         style={{ width: "136px", height: "160px" }}
       />
       <InputContainer>
         {/* 바캉스 이름 */}
         <CustomInput
-          placeholderText="Vaction Name"
+          placeholderText="Room Name"
           backgroundImageURL="/assets/icon/vacance-name.svg"
           value={vacanceName}
           onChange={(e) => setVacanceName(e.target.value)}
@@ -63,7 +63,7 @@ const StyledCreatePage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #e6ecea;
+  background: #fff;
 `;
 
 const InputContainer = styled.div`
@@ -78,7 +78,7 @@ const CreateButton = styled.button`
   width: 300px;
   height: 50px;
   border-radius: 8px;
-  background: #017100;
+  background: #000;
 
   color: #fff;
   font-family: Inter;
