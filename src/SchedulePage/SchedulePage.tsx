@@ -4,6 +4,7 @@ import Header from '../common/components/Header';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
+import axios from 'axios';
 
 type ConvertDate = Record<string, number>;
 
@@ -17,7 +18,17 @@ type SelectedDate = string;
 const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
 const getGroupData = (groupId: number) => {
-    const host = `52.78.130.4:8080/api/v1/date?groupId=${groupId}`;
+    const host = `http://52.78.130.4:8080/api/v1/date?groupId=${groupId}`;
+
+    axios.get(host)
+        .then((response) => {
+            // 요청이 성공했을 때 실행되는 코드
+            console.log('응답 데이터:', response.data);
+        })
+        .catch((error) => {
+            // 요청이 실패했을 때 실행되는 코드
+            console.error('에러:', error);
+        });
 
     return new Promise((resolve, reject) => {
         resolve(
@@ -56,8 +67,6 @@ const getGroupData = (groupId: number) => {
 }
 
 const postSelectedData = (memberId: number, selectedDates: string[]) => {
-    console.error(memberId);
-    console.error(selectedDates);
     const host = `52.78.130.4:8080/api/v1/date`;
     fetch(host, {
         method: "POST",

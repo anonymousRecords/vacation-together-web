@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CustomInput from "./components/CreateInput";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 const CreatePage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,28 @@ const CreatePage = () => {
 
     // 모든 입력 상태가 비어 있지 않을 때 true로 설정
     const isButtonActive = vacanceName !== '' && vacancePassword !== '' && vacancePasswordConfirm !== '';
+
+  const createRoom = () => {
+    // 방 생성
+    // POST /api/v1/group
+    // request: {
+    //   title: String,
+    //   pw: String
+    // }
+    // response: {
+    //   result: {
+    //     id: Number
+    //   }
+    // }
+
+    const host = `http://52.78.130.4:8080/api/v1/group`;
+    axios.post(host, {
+      title: vacanceName,
+      pw: vacancePassword
+    }).then(response => {
+      
+    })
+  }
 
   return (
     <StyledCreatePage>
@@ -51,7 +74,7 @@ const CreatePage = () => {
       <CreateButton
         onClick={() => {
           if (isButtonActive) {
-            navigate("/enter");
+            createRoom()
           }
         }}
       >
