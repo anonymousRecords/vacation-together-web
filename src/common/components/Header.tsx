@@ -1,28 +1,35 @@
 import { styled } from "styled-components";
 
 type Props = {
-    title?: string;
-    onBack: () => void;
-}
+  title?: string;
+  onBack: () => void;
+};
 const Header = ({ title, onBack }: Props) => {
-    return (
-        <Navigation>
-          {title && (
-            <Title>
-              {title}
-            </Title>
-          )}
-          <NavigationLeft><img src="/assets/icon/back.svg" alt="back button" width="24" height="24" onClick={onBack} /></NavigationLeft>
-          <NavigationRight></NavigationRight>
-        </Navigation>
-      );
-}
+  return (
+    <Navigation>
+      <NavigationLeft>
+        <img
+          src="/assets/icon/back.svg"
+          alt="back button"
+          width="24"
+          height="24"
+          onClick={onBack}
+        />
+      </NavigationLeft>
+      {title && <Title>{title}</Title>}
+      <NavigationRight></NavigationRight>
+    </Navigation>
+  );
+};
 export default Header;
-
 
 const Navigation = styled.div`
   height: 56px;
-  position: relative;
+  /* position: relative; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,10 +55,10 @@ const NavigationRight = styled(NavigationButtonWrap)`
   right: 0;
 `;
 const Title = styled.h2`
-    color: #000;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-`
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
