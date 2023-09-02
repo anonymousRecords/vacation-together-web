@@ -6,6 +6,7 @@ import CreatePage from "./CreatePage/CreatePage";
 import EnterPage from "./EnterPage/EnterPage";
 import MakePage from "./MakePage/MakePage";
 import CompletePage from "./CompletePage/CompletePage";
+import CopyrightPage from "./Copyright/CopyrightPage";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
           <Route path="/enter" element={<EnterPage />} />
           <Route path="/make" element={<MakePage/>}/>
           <Route path="/complete" element={<CompletePage/>}/>
+          <Route path="/copyright" element={<CopyrightPage/>}/>
         </Routes>
       </BrowserRouter>
     </>
