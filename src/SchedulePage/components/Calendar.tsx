@@ -6,6 +6,7 @@ const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 type SelectedDate = string;
 
 type Props = {
+    selectedDate: string[];
 }
 
 const Calendar = ({}: Props) => {
@@ -88,8 +89,8 @@ ${({ isHoliday }) => isHoliday ? `color: red` : 'color: black'};
 const CalendarDateWrap = styled.div`
     display: flex;
     width: 100%;
-    height: 62px;
-    padding: 10px;
+    height: 52px;
+    padding: 8x;
     flex-direction: column;
     justify-content: center;
     align-items: center;
