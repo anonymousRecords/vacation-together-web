@@ -28,6 +28,13 @@ const Calendar = ({}: Props) => {
             ))}
         </CalendarLayout>
         <CalendarLayout>
+            {
+                Array.from({ length: 5 }, (_, i) => i + 1).map(date => <CalendarDateWrap key={date}>
+                    <CalendarDate>
+                        
+                    </CalendarDate>
+                </CalendarDateWrap>)
+            }
             {monthDates.map(date => (
                 <CalendarDateWrap key={date}>
                     <CalendarDate>
@@ -48,7 +55,6 @@ const Container = styled.div`
     padding: 24px 16px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
 
     border-radius: 24px;
     background: white;
@@ -72,6 +78,7 @@ const CalendarHeader = styled.div`
     font-weight: 700;
     line-height: 100%; /* 20px */
     letter-spacing: -0.6px;
+    margin-bottom: 24px;
 `;
 
 const CalendarDay = styled.div<{isHoliday: boolean}>`
@@ -79,7 +86,20 @@ ${({ isHoliday }) => isHoliday ? `color: red` : 'color: black'};
 `
 
 const CalendarDateWrap = styled.div`
-    padding: 8px;
-    background: #eeeeee;
+    display: flex;
+    width: 100%;
+    height: 62px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
 `
-const CalendarDate = styled.div``
+const CalendarDate = styled.div`
+display: flex;
+
+`
+
+const SelectMemberWrap = styled.div`
+`
