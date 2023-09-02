@@ -16,11 +16,14 @@ const EnterPage = () => {
   const [vacancePasswordConfirm, setVacancePasswordConfirm] = useState('');
   // console.log("바캉스 비밀번호 확인", vacancePasswordConfirm)
 
+  // 모든 입력 상태가 비어 있지 않을 때 true로 설정
+  const isButtonActive = nickName !== '' && vacancePassword !== '' && vacancePasswordConfirm !== '';
+
   return (
     <StyledCreatePage>
       <img
-        src="/assets/image/logo-green.png"
-        style={{ width: "136px", height: "160px" }}
+        src="/assets/image/img-enter.png"
+        style={{ width: "94px", height: "180px" }}
       />
       <InputContainer>
         {/* 닉네임 */}
@@ -45,13 +48,15 @@ const EnterPage = () => {
           onChange={(e) => setVacancePasswordConfirm(e.target.value)}
         />
       </InputContainer>
-      <CreateButton
+      <EnterButton
         onClick={() => {
-          navigate("/schedule");
+          if (isButtonActive) {
+            navigate("/schedule");
+          }
         }}
       >
         바캉스 입장하기
-      </CreateButton>
+      </EnterButton>
     </StyledCreatePage>
   );
 };
@@ -63,7 +68,7 @@ const StyledCreatePage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #e6ecea;
+  background: #fff;
 `;
 
 const InputContainer = styled.div`
@@ -74,11 +79,11 @@ const InputContainer = styled.div`
   margin-bottom: 50px;
 `;
 
-const CreateButton = styled.button`
+const EnterButton = styled.button`
   width: 300px;
   height: 50px;
   border-radius: 8px;
-  background: #017100;
+  background: #000;
 
   color: #fff;
   font-family: Inter;
