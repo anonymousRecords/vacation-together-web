@@ -2,11 +2,25 @@ import styled from "styled-components";
 import CustomInput from "../CreatePage/components/CreateInput";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios';
 
 const EnterPage = () => {
   const params = useParams();
-	const id = params.id as string;
+	const groupId = params.id;
   const navigate = useNavigate();
+
+  const EnterHandler = async () => {
+    try {
+      const response = await axios.post('http://52.78.130.4:8080/api/v1/member', {
+        nickName: nickName,
+        groupId: groupId,
+      });
+      console.log(response);
+      navigate(`/${response.data.id}/schedule`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   // 닉네임
   const [nickName, setNickName] = useState('');
@@ -53,7 +67,7 @@ const EnterPage = () => {
       <EnterButton
         onClick={() => {
           if (isButtonActive) {
-            navigate("/schedule");
+            EnterHandler();
           }
         }}
       >
