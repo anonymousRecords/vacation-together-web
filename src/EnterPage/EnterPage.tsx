@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import CustomInput from "../CreatePage/components/CreateInput";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 const EnterPage = () => {
+  const params = useParams();
+	const id = params.id as string;
   const navigate = useNavigate();
 
   // 닉네임

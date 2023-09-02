@@ -38,7 +38,8 @@ const CreatePage = () => {
       title: vacanceName,
       pw: vacancePassword
     }).then(response => {
-      
+      // console.error(response.result.id);
+      // navigate(`/enter/${re}`)
     })
   }
 

@@ -16,7 +16,7 @@ const App: React.FC = () => {
           <Route path="/" element={<StartPage />} />
           <Route path="/:groupId/schedule" element={<SchedulePage/>}/>
           <Route path="/create" element={<CreatePage />} />
-          <Route path="/enter" element={<EnterPage />} />
+          <Route path="/enter/:id" element={<EnterPage />} />
           <Route path="/make" element={<MakePage/>}/>
           <Route path="/complete" element={<CompletePage/>}/>
           <Route path="/copyright" element={<CopyrightPage/>}/>
