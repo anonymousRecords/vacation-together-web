@@ -25,7 +25,6 @@ const ToggleBox = styled.div`
   margin-bottom: 10px;
   display: flex;
   gap: 15px;
-
 `;
 
 const Toggle = styled.div`
