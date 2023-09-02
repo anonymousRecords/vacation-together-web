@@ -21,53 +21,38 @@ export default function Contract({cardRef}:ContractProps) {
       </ContractGuide>
       {/* 계약서 내용 */}
       <CheckContainer>
-        <table>
+      <table>
+        <thead>
           <tr>
-            <td align="center"><img src="/assets/image/logo-black.png" style={{width:'20px'}}/></td>
-            <td align="center">이름</td>
-            <td align="center">이름</td>
-            <td align="center">이름</td>
-            <td align="center">이름</td>
-            <td align="center">이름</td>
+            <th><img src="/assets/image/logo-black.png" style={{width:'20px'}}/></th>
+            <th align="center">이름</th>
+            <th align="center">이름</th>
+            <th align="center">이름</th>
+            <th align="center">이름</th>
+            <th align="center">이름</th>
           </tr>
+        </thead>
+        <tbody>
           <tr>
-            <td>계획</td>
+            <th>계획</th>
             <td>
               <img src="/assets/icon/checked-circle.png" />
+            </td>
+            <td>
+              <img src="/assets/icon/circle.png" />
             </td>
             <td>
               <img src="/assets/icon/checked-circle.png" />
             </td>
             <td>
-              <img src="/assets/icon/checked-circle.png" />
+              <img src="/assets/icon/circle.png" />
             </td>
             <td>
-              <img src="/assets/icon/checked-circle.png" />
-            </td>
-            <td>
-              <img src="/assets/icon/checked-circle.png" />
-            </td>
-          </tr>
-          <tr>
-            <td>주도</td>
-            <td>
-              <img src="/assets/icon/checked-circle.png" />
-            </td>
-            <td>
-              <img src="/assets/icon/checked-circle.png" />
-            </td>
-            <td>
-              <img src="/assets/icon/checked-circle.png" />
-            </td>
-            <td>
-              <img src="/assets/icon/checked-circle.png" />
-            </td>
-            <td>
-              <img src="/assets/icon/checked-circle.png" />
+              <img src="/assets/icon/circle.png" />
             </td>
           </tr>
           <tr>
-            <td>사진</td>
+            <th>주도</th>
             <td>
               <img src="/assets/icon/checked-circle.png" />
             </td>
@@ -85,12 +70,12 @@ export default function Contract({cardRef}:ContractProps) {
             </td>
           </tr>
           <tr>
-            <td>예산</td>
+            <th>사진</th>
             <td>
               <img src="/assets/icon/checked-circle.png" />
             </td>
             <td>
-              <img src="/assets/icon/checked-circle.png" />
+              <img src="/assets/icon/circle.png" />
             </td>
             <td>
               <img src="/assets/icon/checked-circle.png" />
@@ -103,7 +88,7 @@ export default function Contract({cardRef}:ContractProps) {
             </td>
           </tr>
           <tr>
-            <td>음주</td>
+            <th>예산</th>
             <td>
               <img src="/assets/icon/checked-circle.png" />
             </td>
@@ -114,17 +99,36 @@ export default function Contract({cardRef}:ContractProps) {
               <img src="/assets/icon/checked-circle.png" />
             </td>
             <td>
-              <img src="/assets/icon/checked-circle.png" />
+              <img src="/assets/icon/circle.png" />
             </td>
             <td>
               <img src="/assets/icon/checked-circle.png" />
             </td>
           </tr>
-        </table>
+          <tr>
+            <th>음주</th>
+            <td>
+              <img src="/assets/icon/checked-circle.png" />
+            </td>
+            <td>
+              <img src="/assets/icon/checked-circle.png" />
+            </td>
+            <td>
+              <img src="/assets/icon/checked-circle.png" />
+            </td>
+            <td>
+              <img src="/assets/icon/circle.png" />
+            </td>
+            <td>
+              <img src="/assets/icon/circle.png" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </CheckContainer>
       <SignitureContainer>
         <SignitureGuide>
-          우리는 서로의 성향을 이해하고 존중할 것을 약속합니다.
+          우리는 서로의 성향을 <br /> 이해하고 존중할 것을 약속합니다.
         </SignitureGuide>
         <Signiture>
           <SignitureBox />
@@ -138,7 +142,7 @@ export default function Contract({cardRef}:ContractProps) {
 }
 
 const StyledContract = styled.div`
-  margin-top: 30px;
+  margin-top: 150px;
   width: 330px;
   height: 628px;
   border: 1px solid #000;
@@ -159,6 +163,7 @@ const ContractGuide = styled.div`
 `;
 
 const ContractTitle = styled.div`
+  margin-bottom: 10px;
   color: #000;
   font-family: Inter;
   font-size: 32px;
@@ -186,12 +191,20 @@ const CheckContainer = styled.div`
 
   table {
     width: 100%;
-    /* border: 1px solid #444444; */
   }
+  
+  thead th {
+    border-bottom: 1px solid #000; 
+    padding: 3px;
+  }
+  
+  tr > th:first-child {
+    border-right: 1px solid #000; 
+  }
+
   th, td {
-    width: 30px;
-    gap: 10px;
-    /* border: 1px solid #444444; */
+    width: 40px;
+    padding: 3px;
   }
 
   table {
@@ -199,7 +212,6 @@ const CheckContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
   }
 `;
 
@@ -210,12 +222,15 @@ const SignitureContainer = styled.div`
 `;
 
 const SignitureGuide = styled.div`
+  display: block;
+  margin-bottom: 20px;
   color: #000;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 1.3;
+  text-align: center;
 `;
 
 const Signiture = styled.div`
