@@ -37,9 +37,10 @@ const CreatePage = () => {
     axios.post(host, {
       title: vacanceName,
       pw: vacancePassword
-    }).then(response => {
-      // console.error(response.result.id);
-      // navigate(`/enter/${re}`)
+    }).then((response) => {
+      const id = response?.data?.result?.id;
+      console.error(id);
+      navigate(`/enter/${id}`)
     })
   }
 
