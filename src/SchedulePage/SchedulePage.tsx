@@ -56,6 +56,8 @@ const getGroupData = (groupId: number) => {
 }
 
 const postSelectedData = (memberId: number, selectedDates: string[]) => {
+    console.error(memberId);
+    console.error(selectedDates);
     const host = `52.78.130.4:8080/api/v1/date`;
     fetch(host, {
         method: "POST",
@@ -84,25 +86,6 @@ const SchedulePage = () => {
     const [calendarData, setCalendarData] = useState<ConvertDate>({});
     useEffect(() => {
         const newData: ConvertDate = {}
-
-        groupMemberData.forEach(member => {
-            member.selectedDates.forEach(date => {
-                newData[date] = newData[date] ? newData[date] + 1 : 1;
-            });
-        });
-
-        setCalendarData(newData);
-    }, [groupMemberData]);
-
-
-    const date = dayjs();
-
-    const currentDatess = new Date();
-    const daysInMonth = new Date(currentDatess.getFullYear(), currentDatess.getMonth() + 1, 0).getDate();
-    const monthDates = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-    
-    const makeDate = useCallback(() => {
-        const newData: ConvertDate = {}
         groupMemberData.forEach(member => {
             member.selectedDates.forEach(date => {
                 newData[date] = newData[date] ? newData[date] + 1 : 1;
@@ -112,6 +95,17 @@ const SchedulePage = () => {
             newData[date] = newData[date] ? newData[date] + 1 : 1;
         })
 
+        setCalendarData(newData);
+    }, [groupMemberData, selectedDates]);
+
+
+    const date = dayjs();
+
+    const currentDatess = new Date();
+    const daysInMonth = new Date(currentDatess.getFullYear(), currentDatess.getMonth() + 1, 0).getDate();
+    const monthDates = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+    
+    const makeDate = useCallback(() => {
         return monthDates.map(date => 
             <CalendarDateWrap key={date} onClick={() => {
                 const selectedDate = dayjs(`2023-09-${date}`).format('YYYY-MM-DD');
@@ -129,7 +123,7 @@ const SchedulePage = () => {
                 </CalendarDate>
             </CalendarDateWrap>
         )
-    }, [groupMemberData, selectedDates, calendarData]);
+    }, [calendarData]);
 
     
 
@@ -155,6 +149,15 @@ const SchedulePage = () => {
                 </CalendarLayout>
             </CalendarContainer>
         </CalendarWrap>
+        <ButtonContainer>
+            <CreateButton
+                onClick={() => {
+                    postSelectedData(memberId, selectedDates)
+                }}
+            >
+                다음
+        </CreateButton>
+        </ButtonContainer>
     </Container>
 };
 
@@ -170,6 +173,10 @@ const CalendarWrap = styled.div`
 margin-top: 100px;
 padding: 8px;
 `;
+
+const ButtonContainer = styled.div`
+    padding: 8px;
+`
 
 const CalendarContainer = styled.div`
     width: 100%;
@@ -230,3 +237,17 @@ border-radius: 50%;
 `
 
 const SelectMemberWrap = styled.div``;
+
+const CreateButton = styled.button`
+    width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  background: #000;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
