@@ -33,7 +33,7 @@ const Navigation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #F0F0F0;
 `;
 const NavigationButtonWrap = styled.div`
   position: absolute;
