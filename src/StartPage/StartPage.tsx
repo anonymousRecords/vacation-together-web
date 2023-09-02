@@ -25,7 +25,9 @@ const StartPage = () => {
               <button onClick={() => { navigate("/create"); }} className="btn_link_type03">바캉스 생성하기</button>
           </div>
       </div>
-      
+      <div className="copyright">
+        <button onClick={() => { navigate("/copyright"); }} className="btn_link_type04">함께한 사람들</button>
+      </div>
   </div>
   </Styled>
 };
@@ -36,6 +38,7 @@ export default StartPage;
 const Styled = styled.div`
 
     .wrap {
+        position: relative;
         min-width: 360px;
         height: 100vh;
         display: flex;
@@ -99,10 +102,10 @@ const Styled = styled.div`
     }
 
     .info_box {
-        font-size: 0;
         margin-top: 12px;
         padding: 0 70px;
         box-sizing: border-box;
+        font-size: 0;
     }
 
     .info_box .info_txt {
@@ -119,5 +122,21 @@ const Styled = styled.div`
         font-size: 12px;
         color: #fff;
         border-bottom: 1px solid #fff;
+    }
+    .copyright {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 280px;
+      text-align: center;
+    }
+    .copyright .btn_link_type04 {
+        display: inline-block;
+        margin-bottom: 30px;
+        font-weight: normal;
+        font-size: 12px;
+        color: #999;
+        text-align: center;
+        border-bottom: 1px solid #999;
     }
 `
