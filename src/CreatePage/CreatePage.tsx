@@ -16,6 +16,9 @@ const CreatePage = () => {
   const [vacancePasswordConfirm, setVacancePasswordConfirm] = useState('');
   // console.log("바캉스 비밀번호 확인", vacancePasswordConfirm)
 
+    // 모든 입력 상태가 비어 있지 않을 때 true로 설정
+    const isButtonActive = vacanceName !== '' && vacancePassword !== '' && vacancePasswordConfirm !== '';
+
   return (
     <StyledCreatePage>
       <img
@@ -47,7 +50,9 @@ const CreatePage = () => {
       </InputContainer>
       <CreateButton
         onClick={() => {
-          navigate("/enter");
+          if (isButtonActive) {
+            navigate("/enter");
+          }
         }}
       >
         바캉스 생성하기
