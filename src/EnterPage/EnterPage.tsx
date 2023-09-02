@@ -22,8 +22,8 @@ const EnterPage = () => {
   return (
     <StyledCreatePage>
       <img
-        src="/assets/image/logo-green.png"
-        style={{ width: "136px", height: "160px" }}
+        src="/assets/image/img-enter.png"
+        style={{ width: "94px", height: "180px" }}
       />
       <InputContainer>
         {/* 닉네임 */}
@@ -68,7 +68,7 @@ const StyledCreatePage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #e6ecea;
+  background: #fff;
 `;
 
 const InputContainer = styled.div`
@@ -83,7 +83,7 @@ const EnterButton = styled.button`
   width: 300px;
   height: 50px;
   border-radius: 8px;
-  background: #017100;
+  background: #000;
 
   color: #fff;
   font-family: Inter;

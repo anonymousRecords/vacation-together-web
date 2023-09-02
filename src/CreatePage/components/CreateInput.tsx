@@ -33,4 +33,5 @@ const StyledInput = styled.input<StyledInputProps>`
   background-repeat: no-repeat;
   background-size: 32px;
   padding: 14px 14px 14px 68px;
+  border: 1px solid #000;
 `;
