@@ -2,38 +2,55 @@ import styled from "styled-components";
 import CustomInput from "../CreatePage/components/CreateInput";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const EnterPage = () => {
   const params = useParams();
-	const groupId = params.id;
+  const groupId = params.id;
   const navigate = useNavigate();
 
   const EnterHandler = async () => {
     try {
-      const response = await axios.post('http://52.78.130.4:8080/api/v1/member', {
-        nickName: nickName,
-        groupId: groupId,
-      });
+      const response = await axios.post(
+        "http://52.78.130.4:8080/api/v1/member",
+        {
+          nickName: nickName,
+          groupId: groupId,
+        }
+      );
       console.log(response);
       navigate(`/${response.data.id}/schedule`);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   // 닉네임
-  const [nickName, setNickName] = useState('');
+  const [nickName, setNickName] = useState("");
   // console.log("닉네임", nickName)
   // 바캉스 비밀번호
-  const [vacancePassword, setVacancePassword] = useState('');
+  const [vacancePassword, setVacancePassword] = useState("");
   // console.log("바캉스 비밀번호", vacancePassword)
   // 바캉스 비밀번호 확인
-  const [vacancePasswordConfirm, setVacancePasswordConfirm] = useState('');
+  const [vacancePasswordConfirm, setVacancePasswordConfirm] = useState("");
   // console.log("바캉스 비밀번호 확인", vacancePasswordConfirm)
 
   // 모든 입력 상태가 비어 있지 않을 때 true로 설정
-  const isButtonActive = nickName !== '' && vacancePassword !== '' && vacancePasswordConfirm !== '';
+  const isButtonActive =
+    nickName !== "" && vacancePassword !== "" && vacancePasswordConfirm !== "";
+
+  // 닉네임 유효성 검사
+  const maxNickNameLength = 2;
+
+  const handleNickNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    if (value.length > maxNickNameLength) {
+      setNickName(value.slice(0, maxNickNameLength));
+    } else if (pattern_kor.test(value)) {
+      setNickName(value);
+    }
+  };
 
   return (
     <StyledCreatePage>
@@ -47,7 +64,8 @@ const EnterPage = () => {
           placeholderText="Your Name"
           backgroundImageURL="/assets/icon/user.svg"
           value={nickName}
-          onChange={(e) => setNickName(e.target.value)}
+          // onChange={(e) => setNickName(e.target.value)}
+          onChange={handleNickNameChange}
         />
         {/* 바캉스 비밀번호 */}
         <CustomInput
